@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: black;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .piano-white {
+            position: relative;
+        }
+
+        .piano-black {
+            position: absolute;
+            top: 25%;
+            height: 240px;
+        }
+
+        .key-white {
+            width: 5.88%;
+            font-size: 26px;
+            color: #313534;
+            background-color: rgb(241, 241, 241);
+            margin-left: 1px;
+        }
+
+        .key:hover {
+            cursor: pointer;
+        }
+
+        .key-black:active {
+            box-shadow: inset 0px 0px 10px 0px rgb(153, 153, 153);
+        }
+
+        .key-white:active {
+            box-shadow: inset 0px 0px 10px 0px rgb(116, 116, 116);
+        }
+        .active{
+            box-shadow: inset 0px 0px 10px 0px rgb(116, 116, 116);
+        }
+        .key-black {
+            color: rgb(234, 234, 234);
+            width: 40px;
+            height: 100%;
+            background-color: rgb(0, 0, 0);
+            display: inline-block;
+            padding-top: 160px;
+        }
+
+        #CS3 {
+            margin-left: 48px;
+        }
+
+        #DS3 {
+            margin-left: 22px;
+        }
+
+        #FS3 {
+            margin-left: 92px;
+        }
+
+        #GS3 {
+            margin-left: 20px;
+        }
+
+        #AS3 {
+            margin-left: 22px;
+        }
+
+        #CS4 {
+            margin-left: 91px;
+        }
+
+        #DS4 {
+            margin-left: 22px;
+        }
+
+        #FS4 {
+            margin-left: 90px;
+        }
+
+        #GS4 {
+            margin-left: 22px;
+        }
+
+        #AS4 {
+            margin-left: 23px;
+        }
+
+        #CS5 {
+            margin-left: 90px;
+        }
+
+        #DS5 {
+            margin-left: 22px;
+        }
+
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="piano w-100 h-100 d-flex justify-content-center align-items-center">
+        <div class="piano-white w-75 h-50 d-flex justify-content-between">
+            <span class="key key-white border d-flex justify-content-center align-items-end pb-4 rounded-bottom-4"
+                connect="C3" id="C3">C3</span>
+            <span class="key key-white border d-flex justify-content-center align-items-end pb-4 rounded-bottom-4"
+                connect="D3" id="D3">D3</span>
+            <span class="key key-white border d-flex justify-content-center align-items-end pb-4 rounded-bottom-4"
+                connect="E3" id="E3">E3</span>
+            <span class="key key-white border d-flex justify-content-center align-items-end pb-4 rounded-bottom-4"
+                connect="F3" id="F3">F3</span>
+            <span class="key key-white border d-flex justify-content-center align-items-end pb-4 rounded-bottom-4"
+                connect="G3" id="G3">G3</span>
+            <span class="key key-white border d-flex justify-content-center align-items-end pb-4 rounded-bottom-4"
+                connect="A3" id="A3">A3</span>
+            <span class="key key-white border d-flex justify-content-center align-items-end pb-4 rounded-bottom-4"
+                connect="B3" id="B3">B3</span>
+            <span class="key key-white border d-flex justify-content-center align-items-end pb-4 rounded-bottom-4"
+                connect="C4" id="C4">C4</span>
+            <span class="key key-white border d-flex justify-content-center align-items-end pb-4 rounded-bottom-4"
+                connect="D4" id="D4">D4</span>
+            <span class="key key-white border d-flex justify-content-center align-items-end pb-4 rounded-bottom-4"
+                connect="E4" id="E4">E4</span>
+            <span class="key key-white border d-flex justify-content-center align-items-end pb-4 rounded-bottom-4"
+                connect="F4" id="F4">F4</span>
+            <span class="key key-white border d-flex justify-content-center align-items-end pb-4 rounded-bottom-4"
+                connect="G4" id="G4">G4</span>
+            <span class="key key-white border d-flex justify-content-center align-items-end pb-4 rounded-bottom-4"
+                connect="A4" id="A4">A4</span>
+            <span class="key key-white border d-flex justify-content-center align-items-end pb-4 rounded-bottom-4"
+                connect="B4" id="B4">B4</span>
+            <span class="key key-white border d-flex justify-content-center align-items-end pb-4 rounded-bottom-4"
+                connect="C5" id="C5">C5</span>
+            <span class="key key-white border d-flex justify-content-center align-items-end pb-4 rounded-bottom-4"
+                connect="D5" id="D5">D5</span>
+            <span class="key key-white border d-flex justify-content-center align-items-end pb-4 rounded-bottom-4"
+                connect="E5" id="E5">E5</span>
+        </div>
+
+        <div class="piano-black w-75">
+            <span class="key key-black rounded-bottom-3 text-center" connect="CS3" id="CS3">C#</span>
+            <span class="key key-black rounded-bottom-3 text-center" connect="DS3" id="DS3">D#</span>
+            <span class="key key-black rounded-bottom-3 text-center" connect="FS3" id="FS3">F#</span>
+            <span class="key key-black rounded-bottom-3 text-center" connect="GS3" id="GS3">G#</span>
+            <span class="key key-black rounded-bottom-3 text-center" connect="AS3" id="AS3">A#</span>
+            <span class="key key-black rounded-bottom-3 text-center" connect="CS4" id="CS4">C#</span>
+            <span class="key key-black rounded-bottom-3 text-center" connect="DS4" id="DS4">D#</span>
+            <span class="key key-black rounded-bottom-3 text-center" connect="FS4" id="FS4">F#</span>
+            <span class="key key-black rounded-bottom-3 text-center" connect="GS4" id="GS4">G#</span>
+            <span class="key key-black rounded-bottom-3 text-center" connect="AS4" id="AS4">A#</span>
+            <span class="key key-black rounded-bottom-3 text-center" connect="CS5" id="CS5">C#</span>
+            <span class="key key-black rounded-bottom-3 text-center" connect="DS5" id="DS5">D#</span>
+        </div>
+    </div>
+
+    <audio key="q" src="./Notes/C3.wav" controls id="C3audio" connect="C3"></audio>
+    <audio key="2" src="./Notes/CS3.wav" controls id="CS3audio" connect="CS3"></audio>
+    <audio key="w" src="./Notes/D3.wav" controls id="D3audio" connect="D3"></audio>
+    <audio key="3" src="./Notes/DS3.wav" controls id="DS3audio" connect="DS3"></audio>
+    <audio key="e" src="./Notes/E3.wav" controls id="E3audio" connect="E3"></audio>
+    <audio key="r" src="./Notes/F3.wav" controls id="F3audio" connect="F3"></audio>
+    <audio key="5" src="./Notes/FS3.wav" controls id="FS3audio" connect="FS3"></audio>
+    <audio key="t" src="./Notes/G3.wav" controls id="G3audio" connect="G3"></audio>
+    <audio key="6" src="./Notes/GS3.wav" controls id="GS3audio" connect="GS3"></audio>
+    <audio key="y" src="./Notes/A3.wav" controls id="A3audio" connect="A3"></audio>
+    <audio key="7" src="./Notes/AS3.wav" controls id="AS3audio" connect="AS3"></audio>
+    <audio key="u" src="./Notes/B3.wav" controls id="B3audio" connect="B3"></audio>
+    <audio key="i" src="./Notes/C4.wav" controls id="C4audio" connect="C4"></audio>
+    <audio key="9" src="./Notes/CS4.wav" controls id="CS4audio" connect="CS4"></audio>
+    <audio key="o" src="./Notes/D4.wav" controls id="D4audio" connect="D4"></audio>
+    <audio key="0" src="./Notes/DS4.wav" controls id="DS4audio" connect="DS4"></audio>
+    <audio key="p" src="./Notes/E4.wav" controls id="E4audio" connect="E4"></audio>
+    <audio key="z" src="./Notes/F4.wav" controls id="F4audio" connect="F4"></audio>
+    <audio key="s" src="./Notes/FS4.wav" controls id="FS4audio" connect="FS4"></audio>
+    <audio key="x" src="./Notes/G4.wav" controls id="G4audio" connect="G4"></audio>
+    <audio key="d" src="./Notes/GS4.wav" controls id="GS4audio" connect="GS4"></audio>
+    <audio key="c" src="./Notes/A4.wav" controls id="A4audio" connect="A4"></audio>
+    <audio key="f" src="./Notes/AS4.wav" controls id="AS4audio" connect="AS4"></audio>
+    <audio key="v" src="./Notes/B4.wav" controls id="B4audio" connect="B4"></audio>
+    <audio key="b" src="./Notes/C5.wav" controls id="C5audio" connect="C5"></audio>
+    <audio key="h" src="./Notes/CS5.wav" controls id="CS5audio" connect="CS5"></audio>
+    <audio key="n" src="./Notes/D5.wav" controls id="D5audio" connect="D5"></audio>
+    <audio key="j" src="./Notes/DS5.wav" controls id="DS5audio" connect="DS5"></audio>
+    <audio key="m" src="./Notes/E5.wav" controls id="E5audio" connect="E5"></audio>
+
+
+
+    <script src="piano.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
