@@ -1,7 +1,7 @@
 
 const keys = document.querySelectorAll(".key");
 const audios = document.querySelectorAll("audio");
-
+// playin piano using your mouse/touchpad
 keys.forEach(function (key) {
     key.addEventListener("click", function () {
         audios.forEach(function (audio) {
@@ -16,6 +16,8 @@ keys.forEach(function (key) {
     });
 });
 
+
+// playing piano using keyboard
 document.addEventListener("keydown", function (key) {
     audios.forEach(function (audio) {
         if (audio.getAttribute("key") === key.key) {
